@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "start": "node server.js"
+  },
+  "main": "server.js",
+  "dependencies": {
+    "nltk": "0.0.1",
+    "re": "^0.1.4"
+  }
+}

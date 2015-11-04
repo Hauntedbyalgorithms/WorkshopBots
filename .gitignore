@@ -1,2 +1,4 @@
 simple_twitterbot_model/.gitignore
 simple_twitterbot_model/node_modules/.gitkeep
+
+node_modules/

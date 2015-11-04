@@ -1,19 +1,23 @@
-/* --------------------------------------------------- */
+// function to extract from lexicon all words of one type : "jj" for adjective, 
+// "nn" for nouns, "vb" for verbs...
+RiTa.RiLexicon.prototype.types = function(type){
+    var lexicon_type = [];
 
-// http://tinysubversions.com/notes/sorting-bot/
+    all_lexicon_words = this.words();
 
-var RiTa = require('rita');
-var rita = RiTa.RiTa;
+    for( var i=0 ; i < all_lexicon_words.length ; i++){
 
-var lexicon = new RiTa.RiLexicon();
+        temp = rita.getPosTags(all_lexicon_words[i]);
 
-Array.prototype.pick = function() {
-  return this[Math.floor(Math.random()*this.length)];
+        if (temp[0] === type){
+            lexicon_type.push(all_lexicon_words[i]);
+        }
+    }
+
+    return lexicon_type;
 };
 
 /* --------------------------------------------------- */
-
-
 
 // function to extract from lexicon all verbs
 RiTa.RiLexicon.prototype.verbs = function(){
@@ -31,8 +35,10 @@ RiTa.RiLexicon.prototype.verbs = function(){
 	}
 
 	return lexicon_verbs;
-}
+};
 
 
 console.log( lexicon.verbs().pick() );
+
+
 

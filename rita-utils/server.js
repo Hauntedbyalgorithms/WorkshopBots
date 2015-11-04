@@ -36,10 +36,3 @@ RiTa.RiLexicon.prototype.verbs = function(){
 
 console.log( lexicon.verbs().pick() );
 
-
-verbInterval = setInterval("findVerb", 1000);
-
-findVerb = function(){
-
-	console.log( lexicon.verbs().pick() );
-}

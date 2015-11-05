@@ -19,8 +19,15 @@ Tweeter.prototype.postTweet = function(txt) {
 };
 
 
-Tweeter.prototype.searchTweet = function(requete) {
-	this.T.get('search/tweets', { q: requete }, function(err, data, response) {
-		console.log(data);
-	});
+Tweeter.prototype.getTweets = function(request, num) {
+  this.T.get('search/tweets', { q: request, count: num }, function(err, data, response) {
+
+    var tweets = data.statuses;
+
+    for (var i = 0; i < tweets.length; i++) {
+      console.log(tweets[i].text);
+    }
+
+    console.log("");
+  });  
 };

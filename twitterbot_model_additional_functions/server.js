@@ -12,8 +12,8 @@ function sendtweet() {
   tweeter.postTweet(txt);  // Turn this on to tweet
 }
 
-function gettweets(requete) {
-  tweeter.searchTweet(requete);  // Turn this on to tweet
+function getTweets() {
+	tweeter.getTweets("le_mot_de_recherche", nombre_de_reponses);
 }
 
 setInterval(gettweets, 10000);  // Send tweet once a minute (in milliseconds)

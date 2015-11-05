@@ -12,7 +12,11 @@ function sendtweet() {
   tweeter.postTweet(txt);  // Turn this on to tweet
 }
 
-setInterval(sendtweet, 60000);  // Send tweet once a minute (in milliseconds)
+function gettweets(requete) {
+  tweeter.searchTweet(requete);  // Turn this on to tweet
+}
+
+setInterval(gettweets, 10000);  // Send tweet once a minute (in milliseconds)
 
 /* ------------------------- Helpers ----------------------------- */
 

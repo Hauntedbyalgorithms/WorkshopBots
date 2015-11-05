@@ -1,0 +1,101 @@
+<html>
+<head>
+  <title>Chat bot :-)</title>
+
+	<style>
+
+
+	body{
+		font-family: sans-serif;
+	}
+
+	#discussion{
+		max-width: 400px;
+		color: white;
+	}
+	
+	.user{
+		background: blue;
+		text-align: right;
+		border-radius: 10px;
+		padding: 2px 10px;
+	}
+
+	.bot{
+		background: red;
+		text-align: left;
+		border-radius: 10px;
+		padding: 2px 10px;
+	}
+	
+	
+	</style>
+
+</head>
+
+
+<!-- DEBUG=myapp ./bin/www -->
+
+<body>
+
+<p>super</p>
+
+<form action="">
+<p><input type="text" name="reponse_field" id="reponse_field"></p>
+<p><input type="submit" value="envoyer" id="reponse_send"></p>
+</form>
+
+
+<div id="discussion"></div>
+
+
+<script src="javascripts/jquery-1.11.1.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+
+$(document).ready(function(){
+
+	io = io.connect();
+
+	// Emit ready event.
+	io.emit('ready');
+
+	message("ready");
+	
+
+	// Listen for the talk event.
+	io.on('talk', function(data) {
+	    console.log(data.message);
+
+	    message(data.message, "bot");
+	});
+
+	io.on('user connected', function(data) {
+	    console.log(data);
+
+	    message("new user !!!", "bot");
+	});
+
+
+	$("#reponse_send").click(function(event){
+
+		event.preventDefault();
+
+		message( $("#reponse_field").val(), "user" );
+		io.emit('message', { texte: $("#reponse_field").val()} );
+
+		$("#reponse_field").val("");
+	})
+
+
+});
+
+
+function message(text, text_class){
+	$("#discussion").prepend("<p class=\""+text_class+"\">"+text+"</p>");
+}
+
+</script>
+
+</body>
+</html>

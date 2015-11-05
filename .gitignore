@@ -2,3 +2,5 @@ simple_twitterbot_model/.gitignore
 simple_twitterbot_model/node_modules/.gitkeep
 
 node_modules/
+
+!exemples_cours/simple_chat/node_modules/*

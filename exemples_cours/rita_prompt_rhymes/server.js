@@ -33,15 +33,18 @@ function texteIn(entree){
 	process.stdout.write('donnee: ' + entree);
 
 	// on force «entree» a être considérée comme une chaine de caractère
-	entree = String(entree);
+	// et on supprime les caractères invisibles autours
+	entree = entree.toString().trim();
 
-	// on vérifie que «entree» est différent de «\n» (retour à la ligne)
-	if(entree != "\n"){
+	// on vérifie que «entree» est différent d'une chaine de caractère vide (pas de texte)
+	if(entree != ""){
 		// si «entree» a du contenu
 		// alors la variable «rime» = «entree» de laquelle on enleve les 2 derniers caractères
 		// (à l'aide de substring)
-		rime = entree.substring( 0, entree.length-1 );
+		rime = entree;
 	}
+
+	console.log("rime avec: "+rime);
 
 	// on déclare un phrase dans la variable «str»
 	var str = "The cat took a bite!";

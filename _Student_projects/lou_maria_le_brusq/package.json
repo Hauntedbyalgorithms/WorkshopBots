@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "rita": "^1.1.19",
+    "twit": "^1.1.20"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "main": "server.js"
+}
